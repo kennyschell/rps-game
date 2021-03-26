@@ -1,35 +1,9 @@
 from random import randint
 #re-import our game variables
-from gameComponents import gameVars
+from gameComponents import gameVars, winLose
 
-#define a win / lose function and refer to it (invoke) in our game loop
-def winorlose(status):
-	if status == "won":
-		pre_message = "You are the winner!"
-	else:
-		pre_message = "You are the loser!"
 
-		print(pre_message + 'Would you like to play again?')
-
-		choice = False
-
-		while choice == False:
-			choice = input("Y / N? ")
-
-			if choice == "Y" or choice == "y":
-				# reset the game loop and start over again
-
-				gameVars.player_lives = gameVars.total_lives
-				gameVars.computer_lives = gameVars.total_lives
-			elif choice == "N" or choice == "n":
-				# exit message and quit
-				print("You chose to quit, better luck next time!")
-				exit()
-			else:
-				print("Make a valid choice - Y or N")
-				choice = False
-
-	while gameVars.player_choice is False:
+while gameVars.player_choice is False:
 		print("==========*/ RPS GAME */===========")
 		print("Computer Lives:", gameVars.computer_lives, "/", gameVars.total_lives)
 		print("Player Lives:", gameVars.player_lives, "/", gameVars.total_lives)
@@ -41,7 +15,7 @@ def winorlose(status):
 			print("You chose to quit.")
 			exit()
 
-		gameVars.computer_choice = choices[randint(0, 2)]
+		gameVars.computer_choice = gameVars.choices[randint(0, 2)]
 
 		print("user chose: " + gameVars.player_choice)
 		print("computer chose: " + gameVars.computer_choice)
@@ -71,9 +45,9 @@ def winorlose(status):
 				gameVars.computer_lives -= 1
 
 		if gameVars.player_lives == 0:
-			winorlose("lost")
+			winLose.winorlose("lost")
 		elif gameVars.computer_lives == 0:
-			winorlose("won")
+			winLose.winorlose("won")
 		else:
 			gameVars.player_choice = False
 

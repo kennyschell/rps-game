@@ -7,6 +7,6 @@ choices = ["rock", "paper", "scissors"]
 total_lives = 3
 player_lives = total_lives
 computer_lives = total_lives
-player_choice= False
+player_choice = False
 #True or False are Boolean data types
 #essentially, they're equivalent to an on or off switch, 1 or 0.
